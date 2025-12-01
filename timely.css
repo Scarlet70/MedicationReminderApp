@@ -1,0 +1,1026 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Cabin:ital,wght@0,400..700;1,400..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Pacifico&family=Quicksand:wght@300..700&display=swap");
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+:root {
+	/* COLOR STYLES */
+
+	--APP-BG-COLOR: whitesmoke;
+	--APP-BOX-SHADOW: 0px 2px 10px 1px rgba(78, 77, 77, 0.3);
+	--APP-GRADIENT1: linear-gradient(-45deg, #e20b8c, #f84b00);
+	--APP-GRADIENT2: linear-gradient(-45deg, #affcaf, #12dff3);
+	--BODY-BG: rgb(191, 210, 245);
+	--ERROR-BG: rgb(250, 195, 195);
+	--DELETE-BTN-HOVER: rgb(255, 0, 0);
+	/* FONT STYLES */
+
+	--HEADER-FT-FAMILY: "Baloo 2", sans-serif;
+	--HEADER-FT-SIZE: 1.2rem;
+	--MAIN-FT-FAMILY: "Cabin", sans-serif;
+
+	/* OTHERS */
+
+	--APP-BORDER-RADIUS: 0.6rem;
+	--REMINDER-BEFORE-LEFT: 1.64%;
+	--REMINDER-BEFORE-TOP: 0%;
+	--REMINDER-AFTER-LEFT: 33.9%;
+	--REMINDER-AFTER-TOP: 0%;
+
+	/* FOR MEDIA QUERIES */
+
+	--HEADER-FT-SIZE-SM: 1rem;
+	--HEADER-FT-SIZE-XSM: 0.7rem;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	background: var(--BODY-BG);
+}
+
+/* UTILITY CLASSES */
+
+.nowrap {
+	white-space: nowrap;
+}
+
+.error {
+	animation: ShowError 0.3s ease;
+}
+
+.close-modal {
+	animation: CloseModal 1.5s linear forwards;
+}
+
+.close-dialog {
+	animation: CloseDialog 1.5s linear forwards;
+}
+
+@keyframes CloseDialog {
+	0% {
+		opacity: 1;
+	}
+	20% {
+		opacity: 0.8;
+	}
+
+	40% {
+		opacity: 0.6;
+	}
+
+	60% {
+		opacity: 0.4;
+	}
+
+	80% {
+		opacity: 0.2;
+	}
+
+	100% {
+		opacity: 0.1;
+	}
+}
+
+@keyframes CloseModal {
+	0% {
+		width: 96%;
+	}
+	10% {
+		width: 90%;
+	}
+	20% {
+		width: 80%;
+	}
+	30% {
+		width: 70%;
+	}
+	40% {
+		width: 60%;
+	}
+	50% {
+		width: 50%;
+	}
+	60% {
+		width: 40%;
+	}
+	70% {
+		width: 30%;
+	}
+	80% {
+		width: 20%;
+	}
+	100% {
+		width: 5%;
+	}
+}
+
+@keyframes ShowError {
+	0% {
+		transform: translateX(0px);
+		background: var(--ERROR-BG);
+	}
+
+	20% {
+		transform: translateX(-5px);
+		background: var(--ERROR-BG);
+	}
+
+	40% {
+		transform: translateX(5px);
+		background: var(--ERROR-BG);
+	}
+
+	60% {
+		transform: translateX(-5px);
+		background: var(--ERROR-BG);
+	}
+
+	80% {
+		transform: translateX(5px);
+		background: var(--ERROR-BG);
+	}
+
+	100% {
+		transform: translateX(-5px);
+		background: var(--ERROR-BG);
+	}
+}
+
+/* MAIN STYLES */
+
+#username,
+#user-email {
+	font-weight: bolder;
+}
+
+#timely-app-header {
+	scroll-margin-top: 2rem;
+}
+
+#timely-navbar {
+	display: flex;
+	flex-flow: row nowrap;
+	width: 90vw;
+	margin: 2rem auto;
+	background: var(--APP-BG-COLOR);
+	justify-content: space-between;
+	padding: 1rem;
+	padding-inline-start: 1rem;
+	padding-inline-end: 1rem;
+	border-radius: var(--APP-BORDER-RADIUS);
+	font-family: var(--HEADER-FT-FAMILY);
+	font-size: var(--HEADER-FT-SIZE);
+	box-shadow: var(--APP-BOX-SHADOW);
+}
+
+#brandname {
+	display: flex;
+	flex-flow: row nowrap;
+	align-items: center;
+}
+
+#brandname span {
+	color: red;
+}
+
+.brand-slogan {
+	display: flex;
+	flex-flow: column nowrap;
+	line-height: 0.8rem;
+}
+
+#welcome-message {
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+	text-align: right;
+	line-height: 1rem;
+}
+
+#welcome-message p,
+.brand-slogan p {
+	font-size: 0.8rem;
+}
+
+.brand-slogan h2 {
+	font-size: 1.3rem;
+}
+
+#sidebar {
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: space-between;
+	background: rgba(100, 148, 237, 0.349);
+	backdrop-filter: blur(8px);
+	width: 45px;
+	overflow: hidden;
+	height: 100vh;
+	position: fixed;
+	top: 1%;
+	z-index: 1;
+	border-radius: 0 1rem 1rem 0;
+
+	transition: width 0.8s;
+}
+
+#sidebar.open {
+	width: 230px;
+	transition: width 0.8s;
+
+	z-index: 1;
+}
+
+.close-btn {
+	display: flex;
+	justify-content: flex-end;
+}
+
+#close-btn {
+	padding: 0.5rem;
+	border-radius: 0 1rem 0 0;
+	border: 0;
+	outline: 0;
+	font-family: var(--MAIN-FT-FAMILY);
+}
+
+.sidebar-links ul {
+	list-style-type: none;
+	width: 95%;
+	margin: 1px auto;
+}
+
+.sidebar-links ul li {
+	border-bottom: 1px solid cornflowerblue;
+	font-family: var(--MAIN-FT-FAMILY);
+}
+
+.sidebar-links ul li a {
+	text-decoration: none;
+	font-size: 1.1rem;
+	color: #333;
+	padding: 1rem 0 1rem 0.5rem;
+	display: block;
+}
+
+.sidebar-links a:hover {
+	background: cornflowerblue;
+	color: var(--APP-BG-COLOR);
+	font-weight: bold;
+}
+
+.sidebar-links i {
+	padding-right: 2.1rem;
+	color: rgb(46, 116, 245);
+}
+
+.sidebar-links ul li a:hover > i {
+	color: whitesmoke;
+}
+
+#sidebar button {
+	background: transparent;
+	border-bottom: 1px solid cornflowerblue;
+	border-left: 1px solid cornflowerblue;
+	color: rgb(46, 116, 245);
+}
+
+#sidebar button i {
+	font-size: 1.1rem;
+	padding-right: 1.6rem;
+}
+
+.sidebar-links .active {
+	position: relative;
+}
+
+#active {
+	width: 15px;
+	height: 15px;
+	display: none;
+	place-content: center;
+	padding: 0.2rem;
+	background: gray;
+	color: var(--APP-BG-COLOR);
+	font-size: 0.6rem;
+	position: absolute;
+	border-radius: 50%;
+	top: 10%;
+	right: 11%;
+}
+
+#close-btn:hover {
+	background: cornflowerblue;
+	color: var(--APP-BG-COLOR);
+}
+
+.logout {
+	margin-bottom: 0.4rem;
+	border-top: 1px solid cornflowerblue;
+}
+
+#logout-button {
+	padding: 0.6rem 1.2rem;
+	width: 100%;
+	border: 0;
+	outline: 0;
+	font-family: var(--MAIN-FT-FAMILY);
+	font-size: 1.1rem;
+}
+
+#logout-button:hover {
+	background: var(--APP-GRADIENT1);
+	color: var(--APP-BG-COLOR);
+}
+
+#timely-app-main {
+	width: 90vw;
+	margin: 2rem auto;
+	font-family: var(--MAIN-FT-FAMILY);
+	position: relative;
+}
+
+#general-drug-info {
+	width: 100%;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+}
+
+.drug-info {
+	width: calc(25% - 1rem);
+	display: flex;
+	flex-flow: row nowrap;
+	gap: 2rem;
+	padding: 1rem;
+	margin: 1rem 0;
+	background: var(--APP-BG-COLOR);
+	box-shadow: var(--APP-BOX-SHADOW);
+	border-radius: var(--APP-BORDER-RADIUS);
+}
+
+.icon {
+	display: grid;
+	place-content: center;
+	width: 40px;
+	height: 40px;
+	font-size: 1.4rem;
+	border-radius: 0.3rem;
+}
+
+.pill-icon {
+	color: rgb(28, 143, 236);
+	background: rgba(28, 142, 236, 0.24);
+}
+
+.upcoming-icon {
+	color: gold;
+	background: rgba(255, 217, 0, 0.24);
+}
+
+.daily-completed {
+	color: limegreen;
+	background: rgba(50, 205, 50, 0.24);
+}
+
+.total-daily-dose {
+	color: rebeccapurple;
+	background: rgba(102, 51, 153, 0.24);
+}
+
+#total-meds {
+	color: rgb(28, 143, 236);
+}
+
+#tag2 {
+	color: gold;
+}
+
+#tag3 {
+	color: limegreen;
+}
+
+#dose-to-complete-daily {
+	color: rebeccapurple;
+}
+
+#add-medications {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	border-radius: var(--APP-BORDER-RADIUS);
+	background: var(--APP-BG-COLOR);
+	box-shadow: var(--APP-BOX-SHADOW);
+	padding: 1rem 1rem 4rem 1rem;
+	position: relative;
+	margin-bottom: 3rem;
+}
+
+#add-medications::before {
+	content: "";
+	position: absolute;
+	background: transparent;
+	width: 10px;
+	height: 10px;
+	bottom: 0%;
+	left: 58.6%;
+	border-bottom-right-radius: 0.5rem;
+	box-shadow: 6px 6px var(--BODY-BG);
+}
+
+#add-medications::after {
+	content: "";
+	position: absolute;
+	background: transparent;
+	width: 10px;
+	height: 10px;
+	bottom: 0%;
+	left: 90.5%;
+	border-bottom-left-radius: 0.5rem;
+	box-shadow: -6px 6px var(--BODY-BG);
+}
+
+.med-form-container {
+	display: flex;
+	flex-flow: column nowrap;
+	gap: 0.5rem;
+	width: calc(20% - 1rem);
+}
+
+.med-form-container input {
+	width: 100%;
+	padding: 0.7rem;
+	border-radius: 0.3rem;
+	outline: 2px solid rgba(245, 173, 173, 0.171);
+	border: 0;
+}
+
+.med-form-container input:focus {
+	outline: 2px solid rgba(240, 76, 76, 0.74);
+}
+
+.add-med-btn {
+	position: absolute;
+	bottom: -14%;
+	left: 60%;
+	border-radius: 1rem;
+	width: 30%;
+	outline: 8px solid var(--BODY-BG);
+}
+
+.add-med-btn button {
+	padding: 1rem 1.5rem;
+	border-radius: 1rem;
+	border: 0;
+	width: 100%;
+	background: var(--APP-GRADIENT1);
+	font-family: inherit;
+	font-size: 1.2rem;
+	font-weight: bolder;
+	color: white;
+}
+
+#reminders {
+	display: flex;
+	flex-flow: column nowrap;
+	width: 100%;
+	background: var(--APP-BG-COLOR);
+	border-radius: var(--APP-BORDER-RADIUS);
+	box-shadow: var(--APP-BOX-SHADOW);
+	padding: 2.5rem;
+	position: relative;
+}
+
+.header {
+	padding: 0.5rem;
+	width: 30%;
+	background: var(--APP-GRADIENT2);
+	border-radius: 1rem;
+	outline: 8px solid var(--BODY-BG);
+	font-size: 1.2rem;
+	font-weight: bold;
+	position: absolute;
+	top: -20px;
+}
+
+#reminders::before {
+	content: "";
+	position: absolute;
+	background: transparent;
+	width: 12px;
+	height: 12px;
+	border-top-right-radius: 0.9rem;
+	left: var(--REMINDER-BEFORE-LEFT);
+	top: var(--REMINDER-BEFORE-TOP);
+	box-shadow: 3px -3px var(--BODY-BG);
+}
+
+#reminders::after {
+	content: "";
+	position: absolute;
+	background: transparent;
+	width: 12px;
+	height: 12px;
+	border-top-left-radius: 0.9rem;
+	top: var(--REMINDER-AFTER-TOP);
+	left: var(--REMINDER-AFTER-LEFT);
+	box-shadow: -3px -3px var(--BODY-BG);
+}
+
+.drugs {
+	margin: 1rem;
+	padding: 0.7rem;
+	border-left: 3px solid rgb(33, 177, 235);
+}
+
+.drug-name {
+	font-size: 1.2rem;
+}
+
+.drugs:hover {
+	background: rgba(191, 221, 248, 0.397);
+	border-top-right-radius: 1rem;
+	border-bottom-right-radius: 1rem;
+}
+
+.drug-information {
+	display: flex;
+	flex-flow: row nowrap;
+	width: 100%;
+	justify-content: space-between;
+	margin-bottom: 1rem;
+}
+
+.drug-details {
+	display: flex;
+	flex-flow: row nowrap;
+	gap: 1rem;
+}
+
+.drug-details div {
+	width: calc(22% - 1rem);
+	padding: 0.2rem;
+	border-radius: var(--APP-BORDER-RADIUS);
+	border: 1px solid rgba(245, 173, 173, 0.404);
+}
+
+.drug-details div:first-child:hover {
+	border: 1px solid rgb(28, 143, 236);
+}
+
+.drug-details div:nth-of-type(2):hover {
+	border: 1px solid rebeccapurple;
+}
+
+.drug-details div:nth-of-type(3):hover {
+	border: 1px solid gold;
+}
+
+.drug-details div:nth-of-type(4):hover {
+	border: 1px solid limegreen;
+}
+
+.drug-card {
+	color: rgb(28, 143, 236);
+	background: rgba(28, 142, 236, 0.24);
+	padding: 0.2rem;
+	width: 40px;
+	height: 40px;
+	border-radius: 0.3rem;
+	display: grid;
+	place-content: center;
+	font-size: 1.3rem;
+}
+
+.drug-name-container {
+	display: flex;
+	flex-flow: row nowrap;
+	gap: 0.2rem;
+}
+
+.delete-btn {
+	border: 0;
+	outline: 0;
+	background: transparent;
+	font-size: 1.4rem;
+	color: rgb(221, 25, 25);
+}
+
+.delete-btn:hover {
+	color: var(--DELETE-BTN-HOVER);
+}
+
+.dose-value {
+	color: rgb(28, 143, 236);
+}
+
+.time-value {
+	color: rebeccapurple;
+}
+
+.next-dose-value {
+	color: gold;
+}
+
+.remainder-value {
+	color: limegreen;
+}
+
+.draft {
+	opacity: 0.5;
+	pointer-events: none;
+	filter: grayscale(80%);
+}
+
+#confirm-delete-reminder {
+	padding: 0.8rem;
+	border: none;
+	width: 300px;
+	border-radius: 0.5rem;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+	background: cornflowerblue;
+	letter-spacing: 0.05rem;
+	color: #0a0a0a;
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+	position: fixed;
+	top: 40%;
+	left: 40%;
+}
+
+.confirm-delete-buttons {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-around;
+	margin-top: 2rem;
+}
+
+.confirm-delete-buttons button {
+	padding: 0.3rem 0.7rem;
+	font-family: inherit;
+}
+
+.confirm-delete-buttons button:first-of-type:hover {
+	background: #f72307;
+	color: var(--APP-BG-COLOR);
+}
+
+.confirm-delete-buttons button:last-of-type:hover {
+	background: limegreen;
+	color: var(--APP-BG-COLOR);
+}
+
+#set-reminder,
+#medication-reminder {
+	padding: 0.8rem;
+	border: none;
+	width: 45vw;
+	border-radius: 0.5rem;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+	background: cornflowerblue;
+	letter-spacing: 0.05rem;
+	color: #0a0a0a;
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+	position: fixed;
+	top: 3%;
+	left: 27%;
+}
+
+#medication-reminder {
+	position: fixed;
+	top: 67%;
+	left: 50%;
+}
+
+.reminder-close {
+	position: absolute;
+	top: 2%;
+	right: 1%;
+	width: 20px;
+	height: 20px;
+	display: grid;
+	place-content: center;
+	background: transparent;
+	color: #0a0a0a;
+}
+
+.reminder-close2 {
+	position: absolute;
+	top: 2%;
+	right: 1%;
+	width: 20px;
+	height: 20px;
+	display: grid;
+	place-content: center;
+	background: transparent;
+	color: #0a0a0a;
+}
+
+.reminder-close:hover {
+	background: var(--APP-GRADIENT1);
+	color: var(--APP-BG-COLOR);
+}
+.reminder-close2:hover {
+	background: var(--APP-GRADIENT1);
+	color: var(--APP-BG-COLOR);
+}
+
+.close-modal {
+	position: absolute;
+	bottom: 0%;
+	width: 96%;
+	height: 2.5%;
+	background: var(--APP-GRADIENT2);
+}
+
+#set-reminder .dialog-brand-name,
+#medication-reminder .dialog-brand-name,
+#confirm-delete .dialog-brand-name {
+	font-size: 0.8rem;
+	margin-bottom: 1rem;
+}
+
+#set-reminder .closedialog-btn {
+	border-radius: 1rem;
+	outline: 0;
+	border: 0;
+	width: 30%;
+	margin: 1px auto;
+	padding: 0.3rem 0.6rem;
+	margin-top: 2rem;
+	font-family: var(--HEADER-FT-FAMILY);
+	font-size: 1rem;
+}
+
+#set-reminder::backdrop,
+#medication-reminder::backdrop,
+#confirm-delete::backdrop {
+	background: rgba(0, 0, 0, 0.5);
+}
+
+#medication-reminder .reminder-buttons {
+	display: flex;
+	flex-flow: row nowrap;
+	gap: 4rem;
+	margin-top: 1rem;
+}
+
+.reminder-buttons button:nth-of-type(1) i {
+	color: red;
+}
+
+.reminder-buttons button:nth-of-type(2) i {
+	color: lime;
+}
+
+#set-reminder button,
+#medication-reminder button {
+	padding: 0.5rem 1rem;
+	border-radius: 1rem;
+	border: 0;
+	outline: 0;
+	font-size: 1rem;
+	font-family: var(--HEADER-FT-FAMILY);
+}
+
+#set-reminder:not([open]),
+#medication-reminder:not([open]),
+#confirm-delete-reminder:not([open]) {
+	display: none;
+}
+
+footer {
+	margin-top: 10rem;
+}
+
+footer section {
+	width: 90%;
+	margin: 2rem auto;
+}
+
+#footer-links {
+	padding: 1rem;
+}
+
+#footer-links ul li a {
+	text-decoration: none;
+	color: #333;
+}
+
+#footer-links ul {
+	list-style-type: none;
+	display: flex;
+	font-size: 2.3rem;
+	justify-content: center;
+	gap: 4rem;
+	text-align: center;
+}
+
+.tooltip {
+	visibility: hidden;
+	opacity: 0;
+	position: absolute;
+	text-align: center;
+	transition: opacity 0.3s;
+	z-index: 1;
+	font-weight: bold;
+
+	bottom: 120%;
+	left: 50%;
+	transform: translateX(-50%);
+	white-space: nowrap;
+}
+
+#footer-links ul li {
+	position: relative;
+	display: inline-block;
+}
+
+#footer-links ul li:hover .tooltip {
+	visibility: visible;
+	opacity: 1;
+}
+
+#whatsapp {
+	color: #0dc50d;
+	text-shadow: -1px 6px 10px #7e7d7d;
+}
+
+#facebook {
+	color: dodgerblue;
+	text-shadow: -1px 6px 10px #7e7d7d;
+}
+
+#instagram {
+	color: #f1072e;
+	text-shadow: -1px 6px 10px #7e7d7d;
+}
+
+#linkedin {
+	color: #0b31ad;
+	text-shadow: -1px 6px 10px #7e7d7d;
+}
+
+#x {
+	color: #b94a0a;
+	text-shadow: -1px 6px 10px #7e7d7d;
+}
+
+#link1 a:hover {
+	color: #0dc50d;
+}
+#link2 a:hover {
+	color: dodgerblue;
+}
+#link3 a:hover {
+	color: #f1072e;
+}
+#link4 a:hover {
+	color: rgb(11, 49, 173);
+}
+#link5 a:hover {
+	color: #b94a0a;
+}
+
+#footer-links ul span {
+	font-family: "Cabin", sans-serif;
+	font-size: 1.3rem;
+	position: absolute;
+}
+
+#copyright-msg {
+	font-family: "Cabin", sans-serif;
+	text-align: center;
+}
+
+@media screen and (max-width: 1200px) {
+	#reminders::before {
+		left: 2.3%;
+	}
+
+	#reminders::after {
+		left: 34.5%;
+	}
+}
+
+@media screen and (max-width: 1000px) {
+	#timely-navbar {
+		font-size: var(--HEADER-FT-SIZE-SM);
+	}
+
+	.drug-info {
+		width: calc(50% - 1.5rem);
+	}
+
+	#add-medications {
+		flex-flow: column nowrap;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.med-form-container {
+		width: 80%;
+		margin: 0.6rem;
+	}
+
+	.add-med-btn {
+		bottom: -5%;
+	}
+
+	#add-medications::before {
+		left: 57.3%;
+	}
+
+	#add-medications::after {
+		left: 91%;
+	}
+
+	.add-med-btn button {
+		font-size: 1.1rem;
+	}
+
+	#reminders::before {
+		display: none;
+	}
+
+	#reminders::after {
+		display: none;
+	}
+
+	.drug-details div {
+		font-size: 0.9rem;
+	}
+
+	#medication-reminder {
+		font-size: 0.9rem;
+		letter-spacing: 0.05rem;
+		color: #0a0a0a;
+		display: flex;
+		flex-flow: column nowrap;
+		justify-content: center;
+		position: absolute;
+		position: fixed;
+		top: 70%;
+		left: 48%;
+	}
+
+	#medication-reminder button {
+		font-size: 0.9rem;
+		padding: 0.3rem 0.6rem;
+	}
+
+	#medication-reminder::before {
+		width: 92%;
+	}
+
+	#medication-reminder .reminder-buttons {
+		gap: 2rem;
+	}
+}
+
+@media screen and (max-width: 500px) {
+	#add-medications::before {
+		left: 56.3%;
+	}
+
+	#add-medications::after {
+		left: 92%;
+	}
+}
+
+@media screen and (max-width: 320px) {
+	#timely-navbar {
+		font-size: var(--HEADER-FT-SIZE-XSM);
+	}
+
+	#timely-navbar img {
+		width: 25px;
+		height: 25px;
+	}
+
+	.brand-slogan h2 {
+		font-size: var(--HEADER-FT-SIZE-SM);
+	}
+	.brand-slogan p {
+		font-size: var(--HEADER-FT-SIZE-XSM);
+	}
+
+	.drug-info {
+		width: 100%;
+	}
+
+	#general-drug-info {
+		display: flex;
+		flex-flow: column nowrap;
+	}
+}

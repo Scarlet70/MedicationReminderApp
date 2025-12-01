@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" href="../img/timelyicon.png" type="image/x-icon" />
+		<link rel="stylesheet" href="timelysignuplogin.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" />
+		<script defer src="timelysignuplogin.js"></script>
+		<title>Sign Up - Timely</title>
+	</head>
+	<body>
+		<main id="login-form-main">
+			<div class="brandname">
+				<img src="../img/timelyicon.png" alt="" width="30" height="30" />
+				<div class="brand-slogan">
+					<h2 class="nowrap">
+						Timely<span>R<sub>x</sub></span>
+					</h2>
+				</div>
+			</div>
+			<section class="sign-up-section">
+				<article id="sign-up-form">
+					<fieldset>
+						<legend>New User</legend>
+						<div class="sign-up-form-container">
+							<label for="sign-up-username">Username</label>
+							<input type="text" id="sign-up-username" placeholder="enter your preferred username" />
+							<p id="progress-message1"></p>
+						</div>
+						<div class="sign-up-form-container">
+							<label for="email">Email</label>
+							<input type="email" id="email" placeholder="enter your email" />
+							<p id="progress-message2"></p>
+						</div>
+						<div class="sign-up-form-container">
+							<label for="signup-password">Password</label>
+							<input type="password" id="signup-password" placeholder="choose password" />
+							<p id="progress-message3"></p>
+						</div>
+						<div class="sign-up-form-container">
+							<label for="signup-confirm-password">Confirm Password</label>
+							<input type="password" id="signup-confirm-password" placeholder="confirm password" />
+							<p id="progress-message4"></p>
+						</div>
+					</fieldset>
+					<p id="progress-message"></p>
+					<p id="signup-message"></p>
+				</article>
+				<div class="buttons">
+					<button id="register-btn"><span class="nowrap">Register</span></button>
+				</div>
+
+				<p id="login-message">Already have an account? <a href="timelylogin.html">Login!</a></p>
+			</section>
+		</main>
+		<footer>
+			<a href="./timely.html">Home</a>
+		</footer>
+	</body>
+</html>

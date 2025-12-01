@@ -1,0 +1,242 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Cabin:ital,wght@0,400..700;1,400..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Pacifico&family=Quicksand:wght@300..700&display=swap");
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+:root {
+	/* COLOR STYLES */
+
+	--APP-BG-COLOR: whitesmoke;
+	--APP-BOX-SHADOW: 0px 2px 10px 1px rgba(78, 77, 77, 0.3);
+	--APP-GRADIENT1: linear-gradient(-45deg, #e20b8c, #f84b00);
+	--APP-GRADIENT2: linear-gradient(-45deg, #affcaf, #12dff3);
+	--BODY-BG: rgb(191, 210, 245);
+	--BODY-BG2: rgb(218, 220, 224);
+	--ERROR-BG: rgb(250, 195, 195);
+	--DELETE-BTN-HOVER: rgb(255, 0, 0);
+	/* FONT STYLES */
+
+	--HEADER-FT-FAMILY: "Pacifico", sans-serif;
+	--HEADER-FT-SIZE: 1.2rem;
+	--MAIN-FT-FAMILY: "Cabin", sans-serif;
+
+	/* OTHERS */
+
+	--APP-BORDER-RADIUS: 0.6rem;
+	--REMINDER-BEFORE-LEFT: 1.64%;
+	--REMINDER-BEFORE-TOP: 0%;
+	--REMINDER-AFTER-LEFT: 33.9%;
+	--REMINDER-AFTER-TOP: 0%;
+
+	/* FOR MEDIA QUERIES */
+
+	--HEADER-FT-SIZE-SM: 1rem;
+}
+
+body {
+	background: var(--BODY-BG2);
+}
+
+/* UTILITY CLASSES */
+
+.nowrap {
+	white-space: nowrap;
+}
+
+.error {
+	animation: ShowError 0.3s ease;
+}
+
+@keyframes ShowError {
+	0% {
+		transform: translateX(0px);
+		background: var(--ERROR-BG);
+	}
+
+	20% {
+		transform: translateX(-5px);
+		background: var(--ERROR-BG);
+	}
+
+	40% {
+		transform: translateX(5px);
+		background: var(--ERROR-BG);
+	}
+
+	60% {
+		transform: translateX(-5px);
+		background: var(--ERROR-BG);
+	}
+
+	80% {
+		transform: translateX(5px);
+		background: var(--ERROR-BG);
+	}
+
+	100% {
+		transform: translateX(-5px);
+		background: var(--ERROR-BG);
+	}
+}
+
+.brandname {
+	display: flex;
+	flex-flow: row nowrap;
+	align-items: center;
+}
+
+.brandname {
+	font-family: var(--HEADER-FT-FAMILY);
+	font-size: 0.8rem;
+}
+
+.brandname span {
+	color: red;
+}
+
+#login-form-main {
+	display: flex;
+	flex-flow: column nowrap;
+	width: 370px;
+	min-height: 420px;
+	background-color: var(--APP-BG-COLOR);
+	padding: 0.6rem;
+	margin: 7rem auto;
+	border-radius: var(--APP-BORDER-RADIUS);
+	box-shadow: var(--APP-BOX-SHADOW);
+	font-family: var(--MAIN-FT-FAMILY);
+}
+
+.login-form-section {
+	display: block;
+	padding: 1rem;
+}
+
+#login-form {
+	margin: 1rem 0;
+}
+
+.login-form-container {
+	display: flex;
+	flex-flow: column nowrap;
+	gap: 0.2rem;
+	margin: 0.5rem 0;
+	height: 4rem;
+}
+
+label {
+	font-size: 0.9rem;
+	color: #333;
+}
+input {
+	width: 100%;
+	padding: 0.4rem;
+	border-radius: 0.3rem;
+	outline: 2px solid rgba(245, 173, 173, 0.171);
+	border: 0;
+	font-family: inherit;
+}
+input:is(:hover, :focus) {
+	outline: 2px solid rgba(100, 148, 237, 0.596);
+	color: #333;
+}
+
+input:hover + label {
+	color: rgba(100, 148, 237, 0.596);
+}
+
+.buttons {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: center;
+	gap: 1rem;
+	padding: 0.3rem;
+}
+
+button {
+	padding: 0.5rem 1rem;
+	border: 0;
+	outline: 1px solid cornflowerblue;
+	border-radius: 0.26rem;
+	font-weight: bold;
+	color: cornflowerblue;
+	background: transparent;
+}
+
+button:last-child {
+	outline: 1px solid #f84b00;
+	color: #f84b00;
+}
+
+button:first-child:hover {
+	background: cornflowerblue;
+	color: whitesmoke;
+}
+
+button:last-child:hover {
+	background: #f84b00;
+	color: whitesmoke;
+}
+
+a {
+	font-family: var(--MAIN-FT-FAMILY);
+	text-decoration: none;
+	color: #f84b00;
+}
+
+a:hover {
+	color: cornflowerblue;
+}
+
+#register-message,
+#login-message {
+	margin: 0.5rem 0;
+	font-size: 0.8rem;
+	text-align: center;
+}
+
+.free {
+	color: #f84b00;
+}
+
+.free2 {
+	color: cornflowerblue;
+}
+
+/* .sign-up-section {
+	display: none;
+}
+ */
+.sign-up-form-container {
+	display: flex;
+	flex-flow: column nowrap;
+	gap: 0.2rem;
+	margin: 0.5rem 0;
+	height: 4rem;
+}
+
+#sign-up-form {
+	padding: 1rem;
+}
+
+#sign-up-form .sign-up-form-container p {
+	font-size: 0.7rem;
+}
+
+fieldset {
+	padding: 0.9rem;
+	border-radius: var(--APP-BORDER-RADIUS);
+}
+legend {
+	font-weight: bolder;
+	color: #333;
+}
+
+#progress-message {
+	text-align: center;
+	margin-bottom: 1rem;
+	font-size: 0.9rem;
+}

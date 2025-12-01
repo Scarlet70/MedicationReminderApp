@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" href="../img/timelyicon.png" type="image/x-icon" />
+		<title>TimelyRx</title>
+		<link rel="stylesheet" href="timely.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" />
+		<script defer src="timely.js"></script>
+	</head>
+	<body>
+		<header id="timely-app-header">
+			<nav id="timely-navbar">
+				<div id="brandname">
+					<img src="../img/timelyicon.png" alt="" width="40" height="40" />
+					<div class="brand-slogan">
+						<h2 class="nowrap">
+							Timely<span>R<sub>x</sub></span>
+						</h2>
+						<p>your health, our priority!</p>
+					</div>
+				</div>
+				<div id="welcome-message">
+					<h3>Welcome <span id="username">User</span></h3>
+					<p class="mail-message">emails will be sent to <span id="user-email">Randommail@gmail.com</span></p>
+				</div>
+			</nav>
+			<nav id="sidebar">
+				<div class="close-btn">
+					<button type="button" id="close-btn"><i class="fa-solid fa-bars"></i></button>
+				</div>
+				<div class="sidebar-links">
+					<ul>
+						<li>
+							<a href="#timely-app-header" class="nowrap"><i class="fa-solid fa-circle-user"></i> Dashboard</a>
+						</li>
+						<li>
+							<a class="active nowrap" href="#reminders"
+								><i class="fa-solid fa-alarm-clock"></i><span class="nowrap"> Active Reminders</span>
+								<div id="active">0</div>
+							</a>
+						</li>
+						<li>
+							<a href="#adherence" class="nowrap"><i class="fa-solid fa-arrow-up-9-1"></i><span class="nowrap"> Adherence Checker</span></a>
+						</li>
+						<li>
+							<a href="#settings" class="nowrap"><i class="fa-solid fa-gear"></i> Settings</a>
+						</li>
+						<li>
+							<a href="#about" class="nowrap"><i class="fa-solid fa-circle-info"></i> Info</a>
+						</li>
+					</ul>
+				</div>
+				<div class="logout nowrap">
+					<button id="logout-button"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</button>
+				</div>
+			</nav>
+		</header>
+		<main id="timely-app-main">
+			<article id="general-drug-info">
+				<section class="drug-info" id="total-medicines">
+					<div class="icon pill-icon">
+						<i class="fa-solid fa-pills"></i>
+					</div>
+					<div class="medicine-info">
+						<p>Total Medicines</p>
+						<h2 id="total-meds">0</h2>
+					</div>
+				</section>
+				<section class="drug-info" id="upcoming-doses">
+					<div class="icon upcoming-icon">
+						<i class="fa-solid fa-clock"></i>
+					</div>
+					<div class="upcoming-info">
+						<p>Upcoming Doses</p>
+						<h2 id="upcoming-doses-value">0</h2>
+					</div>
+				</section>
+				<section class="drug-info" id="daily-completed-doses">
+					<div class="icon daily-completed">
+						<i class="fa-solid fa-circle-check"></i>
+					</div>
+					<div class="daily-completed-info">
+						<p>Daily Completed Doses</p>
+						<h2 id="tag3">0</h2>
+					</div>
+				</section>
+				<section class="drug-info" id="total-ideal-daily-dose">
+					<div class="icon total-daily-dose">
+						<i class="fa-solid fa-list-check"></i>
+					</div>
+					<div class="total-daily-info">
+						<p>Doses to complete Today</p>
+						<h2 id="dose-to-complete-daily">0</h2>
+					</div>
+				</section>
+			</article>
+			<article id="add-med">
+				<section id="add-medications">
+					<div class="med-form-container">
+						<label for="Medication-name">Medication Name</label>
+						<input type="text" class="user-input" id="medication-name" data-number="1" />
+					</div>
+					<div class="med-form-container">
+						<label for="daily-dosage">Daily Dose</label>
+						<input type="text" class="user-input" id="daily-dosage" data-number="2" />
+					</div>
+					<div class="med-form-container">
+						<label for="duration">Duration(Days)</label>
+						<input type="number" class="user-input" id="duration" data-number="3" />
+					</div>
+					<div class="med-form-container">
+						<label for="start-time">Start Time</label>
+						<input type="time" class="user-input" id="start-time" data-number="4" />
+					</div>
+					<div class="med-form-container">
+						<label for="frequency">Total Dose to be taken</label>
+						<input type="number" class="user-input" id="total-drug-dose" data-number="5" disabled />
+					</div>
+					<div class="add-med-btn">
+						<button type="button" id="add-drug-btn"><i class="fa-solid fa-plus"></i> Add Reminder</button>
+					</div>
+				</section>
+			</article>
+			<article id="reminders">
+				<div class="header">My Reminders</div>
+				<h2 id="reminder-update">No New Reminders! <i class="fa-solid fa-bell-slash"></i></h2>
+				<section id="draft-preview" class="drugs draft">
+					<div class="drug-information">
+						<div class="drug-name-container">
+							<span class="drug-card"><i class="fa-solid fa-tablets"></i></span>
+							<h4 class="drug-name user-preview" data-key="1">-</h4>
+						</div>
+						<button type="button" class="delete-btn hidden"><i class="fa-solid fa-trash-can"></i></button>
+					</div>
+					<div class="drug-details">
+						<div>
+							<p class="dose-text">Max Daily Dose</p>
+							<p class="dose-value user-preview" data-key="2">0</p>
+						</div>
+						<div>
+							<p class="time-text">Duration(Days)</p>
+							<p class="time-value user-preview" data-key="3">0</p>
+						</div>
+						<div>
+							<p class="next-dose-text">Next Dose in</p>
+							<p class="next-dose-value user-preview" data-key="4">0h 0m</p>
+						</div>
+						<div>
+							<p class="remainder-text">Remaining Doses</p>
+							<p class="remainder-value user-preview" data-key="5">0 Days</p>
+						</div>
+					</div>
+				</section>
+			</article>
+			<dialog id="confirm-delete-reminder">
+				<div class="brand-slogan">
+					<h2 class="nowrap dialog-brand-name">
+						Timely<span>R<sub>x</sub></span>
+						<hr />
+					</h2>
+				</div>
+				<button class="reminder-close2 close" type="button"><i class="fa-solid fa-xmark"></i></button>
+				<p>Are you sure you want to delete this reminder?</p>
+				<div class="confirm-delete-buttons">
+					<button id="delete-button" class="confirm" type="button"><i class="fa-solid fa-trash-can"></i> Delete</button>
+					<button id="cancel-button" class="confirm" type="button"><i class="fa-solid fa-xmark"></i> Cancel</button>
+				</div>
+			</dialog>
+			<article class="adherence-section"></article>
+			<dialog id="set-reminder" class="reminder-dialog">
+				<div class="brand-slogan">
+					<h2 class="nowrap dialog-brand-name">
+						Timely<span>R<sub>x</sub></span>
+						<hr />
+					</h2>
+				</div>
+				<button class="reminder-close2 close" type="button"><i class="fa-solid fa-xmark"></i></button>
+				<p>A medication reminder has been set for <span id="reminder-time">00:00</span>⏰</p>
+				<button type="button" class="closedialog-btn close">OK</button>
+				<div class="modal-animation1"></div>
+			</dialog>
+
+			<dialog id="medication-reminder" class="reminder-dialog">
+				<div class="brand-slogan">
+					<h2 class="nowrap dialog-brand-name">
+						Timely<span>R<sub>x</sub></span>
+						<hr />
+					</h2>
+				</div>
+				<button class="reminder-close close" type="button"><i class="fa-solid fa-xmark"></i></button>
+				<p>Its time to take your medication!!</p>
+				<p>Have you completed your upcoming dose of <span class="drug-medication-name">drug</span>, set for <span class="time">00:00</span> today?</p>
+				<div class="reminder-buttons">
+					<button id="no" type="button" class="nowrap"><i class="fa-solid fa-xmark"></i>No, I haven't!</button>
+					<button id="yes" type="button"><i class="fa-solid fa-check"></i>Yes, I have!</button>
+				</div>
+				<p class="feedback-msg"></p>
+				<div class="modal-animation2"></div>
+			</dialog>
+		</main>
+		<footer id="timely-app-footer">
+			<section id="footer-links">
+				<ul>
+					<li id="link1">
+						<a href="" class="socials"><i class="fa-brands fa-whatsapp"></i></a>
+						<span class="tooltip" id="whatsapp">WhatsApp</span>
+					</li>
+					<li id="link2">
+						<a href="" class="socials"><i class="fa-brands fa-facebook"></i></a>
+						<span class="tooltip" id="facebook">Facebook</span>
+					</li>
+					<li id="link3">
+						<a href="" class="socials"><i class="fa-brands fa-instagram"></i></a>
+						<span class="tooltip" id="instagram">Instagram</span>
+					</li>
+					<li id="link4">
+						<a href="" class="socials"><i class="fa-brands fa-linkedin"></i></a>
+						<span class="tooltip" id="linkedin">LinkedIn</span>
+					</li>
+					<li id="link5">
+						<a href="" class="socials"><i class="fa-brands fa-x-twitter"></i></a>
+						<span class="tooltip" id="x">Twitter</span>
+					</li>
+				</ul>
+			</section>
+			<section id="copyright-msg">
+				<p>Copyright©ChetaTech2025</p>
+			</section>
+		</footer>
+	</body>
+</html>
